@@ -38,13 +38,19 @@ Preencha o formulário e apenas clique em enviar.
 
 Parece ser um projeto que tem futuro, pois facilita muito a vida de quem deseja criar relatórios mas ainda precisa melhorar bastante para ser ainda mais útil.
 
+## Alternativa ao gerador
+
+Caso domine PHP e queira uma alternativa de criação de relatórios via código com mais flexibilidade:
+
+https://github.com/ribafs/reports
+
 ## Veja ascapturas do form do
 
 ### Banco de dados
 
 ![](assets/images/db.png)
 
-### Dos dados do relatórios
+### Sobre os dados do relatórios
 
 ![](assets/images/repost.png)
 
