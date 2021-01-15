@@ -23,7 +23,8 @@
 
 <?php
 if(!file_exists('vendor')) {
-    print "<h3 class=\"text-danger\">Precisa executar antes: <br>composer install<br>no raiz deste diretório</h3>";
+    print "<h3 class=\"text-danger\">Precisa executar antes no diretório raiz</h3>";
+    print '<b>composer install</b>';
     exit;
 } 
 ?>  
