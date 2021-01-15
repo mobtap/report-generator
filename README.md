@@ -46,8 +46,6 @@ https://github.com/ribafs/reports
 
 ## Veja ascapturas do form do
 
-### Banco de dados
-
 ![](assets/images/db.png)
 
 ### Sobre os dados do relatórios
