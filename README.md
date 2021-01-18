@@ -8,6 +8,11 @@ https://github.com/ribafs/reports/tree/main/src/exemplos/CarsByDate
 
 Como é em PHP e é simples, você pode melhorá-lo à vontada. Usa a licença MIT, que é uma das mais generosas.
 
+## Requisitos
+
+- PHP 5.6
+- Composer
+
 ## Crie uma pasta no seu diretório web
 
 mkdir /var/www/html/relatorios
