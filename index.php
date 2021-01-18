@@ -130,57 +130,67 @@ if(!file_exists('vendor')) {
 <?php
 if(isset($_POST['report'])){
 
-system('composer install');
+    system('composer install');
 
-$host = $_POST['host'];
-$db = $_POST['db'];
-$user = $_POST['user'];
-$pass = $_POST['pass'];
-$sgbd = $_POST['sgbd'];
-$port = $_POST['port'];
+    $host = $_POST['host'];
+    $db = $_POST['db'];
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
+    $sgbd = $_POST['sgbd'];
+    $port = $_POST['port'];
 
-$fieldVert = $_POST['fieldVert'];
-$fieldHor = $_POST['fieldHor'];
-$table = $_POST['table'];
+    $fieldVert = $_POST['fieldVert'];
+    $fieldHor = $_POST['fieldHor'];
+    $table = $_POST['table'];
 
-$title = $_POST['title'];
-$labelHor = ucfirst($fieldHor);
-$labelVert = ucfirst($fieldVert);
-$valueHor1 = $_POST['valueHor1'];
-$valueHor2 = $_POST['valueHor2'];
-$valueHor3 = $_POST['valueHor3'];
+    $title = $_POST['title'];
+    $labelHor = ucfirst($fieldHor);
+    $labelVert = ucfirst($fieldVert);
+    $valueHor1 = $_POST['valueHor1'];
+    $valueHor2 = $_POST['valueHor2'];
+    $valueHor3 = $_POST['valueHor3'];
 
-// Criando cópia de report/Report.php ajustada para vendor/koolreport
-$str=file_get_contents('report/Report.php');
+    // Criando cópia de report/Report.php ajustada para vendor/koolreport
+    $str=file_get_contents('report/Report.php');
 
-$str=str_replace('$host', $host, $str);
-$str=str_replace('$db', $db, $str);
-$str=str_replace('$user', $user, $str);
-$str=str_replace('$pass', $pass, $str);
-$str=str_replace('$sgbd', $sgbd, $str);
-$str=str_replace('$port', $port, $str);
-$str=str_replace('$table', $table, $str);
-$str=str_replace('$fieldVert', $fieldVert, $str);
-$str=str_replace('$fieldHor', $fieldHor, $str);
+    $str=str_replace('$host', $host, $str);
+    $str=str_replace('$db', $db, $str);
+    $str=str_replace('$user', $user, $str);
+    $str=str_replace('$pass', $pass, $str);
+    $str=str_replace('$sgbd', $sgbd, $str);
+    $str=str_replace('$port', $port, $str);
+    $str=str_replace('$table', $table, $str);
+    $str=str_replace('$fieldVert', $fieldVert, $str);
+    $str=str_replace('$fieldHor', $fieldHor, $str);
 
-file_put_contents('vendor/koolreport/Report.php', $str);
+    if(is_writable('vendor/koolreport')){
+        file_put_contents('vendor/koolreport/Report.php', $str);
+    }else{
+        print 'O diretório "vendor/koolreport" requer permissão de escrita para o servidor web';
+        exist;
+    }
 
-// Criando cópia de report/Report.view.php ajustada para vendor/koolreport
-$str=file_get_contents('report/Report.view.php');
-$str=str_replace('$title', $title, $str);
-$str=str_replace('$subTitle', $subTitle, $str);
-$str=str_replace('$fieldVert', $fieldVert, $str);
-$str=str_replace('$fieldHor', $fieldHor, $str);
-$str=str_replace('$labelHor', $labelHor, $str);
-$str=str_replace('$labelVert', $labelVert, $str);
-$str=str_replace('$valueHor1', $valueHor1, $str);
-$str=str_replace('$valueHor2', $valueHor2, $str);
-$str=str_replace('$valueHor3', $valueHor3, $str);
+    // Criando cópia de report/Report.view.php ajustada para vendor/koolreport
+    $str=file_get_contents('report/Report.view.php');
+    $str=str_replace('$title', $title, $str);
+    $str=str_replace('$subTitle', $subTitle, $str);
+    $str=str_replace('$fieldVert', $fieldVert, $str);
+    $str=str_replace('$fieldHor', $fieldHor, $str);
+    $str=str_replace('$labelHor', $labelHor, $str);
+    $str=str_replace('$labelVert', $labelVert, $str);
+    $str=str_replace('$valueHor1', $valueHor1, $str);
+    $str=str_replace('$valueHor2', $valueHor2, $str);
+    $str=str_replace('$valueHor3', $valueHor3, $str);
 
-file_put_contents('vendor/koolreport/Report.view.php', $str);
+    if(is_writable('vendor/koolreport')){
+        file_put_contents('vendor/koolreport/Report.view.php', $str);
+        copy('report/index.php','vendor/koolreport/index.php'); 
+    }else{
+        print 'O diretório "vendor/koolreport" requer permissão de escrita para o servidor web';
+        exist;
+    }
 
-copy('report/index.php','vendor/koolreport/index.php'); 
-print "<script>location = 'vendor/koolreport/index.php'</script>";
+    print "<script>location = 'vendor/koolreport/index.php'</script>";
 }
 ?>
 

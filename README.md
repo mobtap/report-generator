@@ -50,6 +50,8 @@ https://github.com/ribafs/reports
 
 ### Sobre os dados do relatórios
 
+![](assets/images/frutas.png)
+
 ![](assets/images/report.png)
 
 ## Feedback
